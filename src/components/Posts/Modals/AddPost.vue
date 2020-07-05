@@ -5,7 +5,7 @@
           <q-space/>
           <q-btn flat round dense icon="close" v-close-popup/>
         </q-card-section>
-        <form @submit="submitForm">
+        <form @submit.prevent="submitForm">
           <q-card-section class="q-pt-none">
             <q-input v-model="postToSubmit.body" outlined label="add your thoughts" :rules="[val=>!!val ||'required field!']" autofocus></q-input>
           </q-card-section>

@@ -21,7 +21,7 @@
 </template>
 
 <script>
- import {mapGetters} from 'vuex';    
+ import {mapGetters, mapActions} from 'vuex';    
   export default {
     data(){
       return {
@@ -32,33 +32,14 @@
       ...mapGetters('posts',['posts']),
     },
     methods: {
+      ...mapActions("posts",[("getPosts")]),
     },
     filters: {
     },
     directives: {
     },
-    beforeCreate(){
-      console.log('befoeCreate')
-    },
-    created(){
-      console.log('created')
-    },
-    beforeMount(){
-      console.log('befoeMount')
-    },
     mounted(){
-    },
-    beforeUpdate(){
-      console.log('beforeUpdate')
-    },
-    updated(){
-      console.log('updated')
-    },
-    beforeDestroy(){
-      console.log('beforeUpdate')
-    },
-    destroyed(){
-      console.log('updated')
+      this.getPosts()
     },
     components:{
       'post': require('components/Posts/Post.vue').default,
@@ -69,14 +50,4 @@
 </script>
 
 <style>
-  .border-grey {
-    border: 1px solid grey;
-  }
-  input, button {
-    font-size:23px;
-  }
-  .error {
-    color: red;
-    background: pink;
-  }
 </style>

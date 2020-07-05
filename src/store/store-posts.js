@@ -1,31 +1,49 @@
-import Vue from 'vue'
-import {uid} from 'quasar'
+//import Vue from 'vue'
+import axios from 'axios'
+const BASE_URL='https://jsonplaceholder.typicode.com'
+
 const state = {
-    posts:{
-        1:{name:'x',time:'5pm',date:'2019'},2:{name:'y',time:'10pm',date:'2010'}
-    }
+    posts: [],
 }
 
 const mutations = {
-    addPost(state,{id, post}){
-        Vue.set(state.posts, id,post)    
+    getPosts(state,payload){
+        state.posts=  payload
     },
-    deletePost(state,id){
-        Vue.delete(state.posts, id)
-    }
+    addPost(state,post){
+        state.posts.push(post);
+    },
+    deletePosts(state,id){
+        //just a work around since getPosts get them all
+        state.posts.splice(id,1);
+    },
 }
 
 const actions = {
-    addPost({commit},post){
-        const newId = uid();
-        const payload = {
-            id:newId,
-            post
-        }
-        commit('addPost',payload)    
+    getPosts({commit}){
+        const localPosts = localStorage.getItem('posts');
+        if(!localPosts) {
+            axios.get(`${BASE_URL}/posts`).then(response => { 
+                localStorage.setItem('posts',JSON.stringify(response.data.slice(0,5)))
+                commit('getPosts',response.data.slice(0,5))
+            })
+        }  
+        else {commit('getPosts',JSON.parse(localPosts))}     
     },
-    deletePost({commit},id){
-        commit('deletePost',id)    
+    addPost({commit},post){
+        axios.post(`${BASE_URL}/posts`,post).then(response => {
+            const localPosts = JSON.parse(localStorage.getItem('posts'));
+            localPosts.push(post)
+            localStorage.setItem('posts',JSON.stringify(localPosts))
+            commit('addPost',response.data)
+        })
+    },
+    deletePost({commit,dispatch},id){
+        axios.delete(`${BASE_URL}/posts/${id}`).then(async response =>{
+            //dispatch('getPosts')
+           await commit('deletePosts',id);
+           localStorage.setItem('posts',JSON.stringify(state.posts))
+        })
     }
 }
 

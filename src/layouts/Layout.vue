@@ -80,7 +80,7 @@ export default {
   data () {
     return {
       navs:[
-        {label:'Posts',icon:'list',to:'/'},{label:'Settings',icon:'settings',to:'/settings'}
+        {label:'About',icon:'description',to:'/about'},{label:'Posts',icon:'list',to:'/'}
       ]
     }
   }
