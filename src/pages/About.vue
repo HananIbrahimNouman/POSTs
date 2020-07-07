@@ -4,13 +4,9 @@
    <p>It's always good to write down your thoughts</p>
   </q-page>
 </template>
-
 <script>
   export default {
    
   }
 </script>
 
-<style>
- 
-</style>

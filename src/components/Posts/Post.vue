@@ -4,7 +4,7 @@
       <q-item-label>{{post.body}}</q-item-label>
     </q-item-section>
     <q-item-section side>
-      <q-btn @click="promptToDelete(id)" flat round dense color="red" icon="delete"></q-btn>
+      <q-btn @click="promptToDelete(id)" flat round dense color="red" icon="delete" aria-label="Center Align"></q-btn>
     </q-item-section>
   </q-item>
 </template>
@@ -30,6 +30,3 @@ export default {
   }
 };
 </script>
-
-<style>
-</style>

@@ -6,8 +6,9 @@
     </q-list>
     <div class="absolute-bottom text-center q-mb-lg">
       <q-btn
+        aria-label="Center Align"
         round
-        color="primary"
+        color="dark"
         size="30px"
         icon="add"
         @click="showAddTask = true"
@@ -34,10 +35,6 @@
     methods: {
       ...mapActions("posts",[("getPosts")]),
     },
-    filters: {
-    },
-    directives: {
-    },
     mounted(){
       this.getPosts()
     },
@@ -48,6 +45,3 @@
     }
   }
 </script>
-
-<style>
-</style>

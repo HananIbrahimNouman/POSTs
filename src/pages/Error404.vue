@@ -10,6 +10,7 @@
       </div>
 
       <q-btn
+        aria-label="Center Align"
         class="q-mt-xl"
         color="white"
         text-color="blue"

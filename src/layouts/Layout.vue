@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="text-black">
       
 
         <q-toolbar-title class="absolute-center">
@@ -10,7 +10,7 @@
       </q-toolbar>
     </q-header>
     <q-footer >
-      <q-tabs>
+      <q-tabs class="bg-black text-white" >
         <q-route-tab
            v-for="(nav, index) in navs"
             :key='index'
@@ -46,7 +46,7 @@
         <q-item-section
           avatar
         >
-          <q-icon :name="nav.icon"/>
+          <q-icon class="text-dark" :name="nav.icon"/>
         </q-item-section>
         <q-item-section
           header
@@ -68,13 +68,13 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+//import EssentialLink from 'components/EssentialLink.vue'
 
 export default {
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    EssentialLink: ()=>import('components/EssentialLink.vue')
   },
 
   data () {

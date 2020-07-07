@@ -3,7 +3,7 @@
         <q-card-section class="row">
           <div class="text-h6">Add Post</div>
           <q-space/>
-          <q-btn flat round dense icon="close" v-close-popup/>
+          <q-btn flat round dense icon="close" v-close-popup aria-label="Center Align"/>
         </q-card-section>
         <form @submit.prevent="submitForm">
           <q-card-section class="q-pt-none">
@@ -11,7 +11,7 @@
           </q-card-section>
 
           <q-card-actions align="right">
-            <q-btn flat label="SAVE" color="primary" type="submit" v-close-popup />
+            <q-btn flat label="SAVE" color="primary" type="submit" v-close-popup aria-label="Center Align" />
           </q-card-actions>
         </form>
 
@@ -41,6 +41,3 @@ export default {
     }
 }
 </script>
-
-<style>
-</style>
